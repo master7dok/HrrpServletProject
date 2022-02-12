@@ -4,14 +4,17 @@ import com.dmdev.http.entity.Flight;
 import com.dmdev.http.entity.FlightStatus;
 import com.dmdev.http.util.ConnectionManager;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class FlightDao implements Dao<Long, Flight>{
+public class FlightDao implements Dao<Long, Flight> {
 
     private static final FlightDao INSTANCE = new FlightDao();
+
     private static final String FIND_ALL = """
             SELECT *
             FROM flight
@@ -26,17 +29,15 @@ public class FlightDao implements Dao<Long, Flight>{
              var preparedStatement = connection.prepareStatement(FIND_ALL)) {
             var resultSet = preparedStatement.executeQuery();
             List<Flight> flights = new ArrayList<>();
-
             while (resultSet.next()) {
                 flights.add(buildFlight(resultSet));
             }
+
             return flights;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-
 
     @Override
     public Optional<Flight> findById(Long id) {
@@ -44,7 +45,7 @@ public class FlightDao implements Dao<Long, Flight>{
     }
 
     @Override
-    public boolean delete() {
+    public boolean delete(Long id) {
         return false;
     }
 
@@ -61,6 +62,7 @@ public class FlightDao implements Dao<Long, Flight>{
     public static FlightDao getInstance() {
         return INSTANCE;
     }
+
     private Flight buildFlight(ResultSet resultSet) throws SQLException {
         return new Flight(
                 resultSet.getObject("id", Long.class),
@@ -73,6 +75,10 @@ public class FlightDao implements Dao<Long, Flight>{
                 FlightStatus.valueOf(resultSet.getObject("status", String.class))
         );
     }
+
+
+
+
 
 
 

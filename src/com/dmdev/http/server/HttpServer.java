@@ -12,8 +12,6 @@ import java.util.concurrent.Executors;
 
 public class HttpServer {
 
-
-
     private final ExecutorService pool;
     private final int port;
     private boolean stopped;

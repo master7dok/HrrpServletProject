@@ -5,25 +5,25 @@ import java.util.Objects;
 
 public class Flight {
 
-
     private Long id;
     private String flightNo;
-    private LocalDateTime DepartureDate;
-    private String DepartureAirportCode;
-    private LocalDateTime arrivalAirportCode;
+    private LocalDateTime departureDate;
+    private String departureAirportCode;
+    private LocalDateTime arrivalDate;
+    private String arrivalAirportCode;
     private Integer aircraftId;
     private FlightStatus status;
 
     public Flight(Long id, String flightNo, LocalDateTime departureDate, String departureAirportCode, LocalDateTime arrivalDate, String arrivalAirportCode, Integer aircraftId, FlightStatus status) {
-            this.id = id;
-            this.flightNo = flightNo;
-            DepartureDate = departureDate;
-            DepartureAirportCode = departureAirportCode;
-            this.arrivalAirportCode = LocalDateTime.parse(arrivalAirportCode);
-            this.aircraftId = aircraftId;
-            this.status = status;
-        }
-
+        this.id = id;
+        this.flightNo = flightNo;
+        this.departureDate = departureDate;
+        this.departureAirportCode = departureAirportCode;
+        this.arrivalDate = arrivalDate;
+        this.arrivalAirportCode = arrivalAirportCode;
+        this.aircraftId = aircraftId;
+        this.status = status;
+    }
 
     public Long getId() {
         return id;
@@ -42,26 +42,34 @@ public class Flight {
     }
 
     public LocalDateTime getDepartureDate() {
-        return DepartureDate;
+        return departureDate;
     }
 
     public void setDepartureDate(LocalDateTime departureDate) {
-        DepartureDate = departureDate;
+        this.departureDate = departureDate;
     }
 
     public String getDepartureAirportCode() {
-        return DepartureAirportCode;
+        return departureAirportCode;
     }
 
     public void setDepartureAirportCode(String departureAirportCode) {
-        DepartureAirportCode = departureAirportCode;
+        this.departureAirportCode = departureAirportCode;
     }
 
-    public LocalDateTime getArrivalAirportCode() {
+    public LocalDateTime getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(LocalDateTime arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    public String getArrivalAirportCode() {
         return arrivalAirportCode;
     }
 
-    public void setArrivalAirportCode(LocalDateTime arrivalAirportCode) {
+    public void setArrivalAirportCode(String arrivalAirportCode) {
         this.arrivalAirportCode = arrivalAirportCode;
     }
 
@@ -99,9 +107,10 @@ public class Flight {
         return "Flight{" +
                 "id=" + id +
                 ", flightNo='" + flightNo + '\'' +
-                ", DepartureDate=" + DepartureDate +
-                ", DepartureAirportCode='" + DepartureAirportCode + '\'' +
-                ", arrivalAirportCode=" + arrivalAirportCode +
+                ", departureDate=" + departureDate +
+                ", departureAirportCode='" + departureAirportCode + '\'' +
+                ", arrivalDate=" + arrivalDate +
+                ", arrivalAirportCode='" + arrivalAirportCode + '\'' +
                 ", aircraftId=" + aircraftId +
                 ", status=" + status +
                 '}';

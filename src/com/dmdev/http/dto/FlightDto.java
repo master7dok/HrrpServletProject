@@ -2,7 +2,8 @@ package com.dmdev.http.dto;
 
 import java.util.Objects;
 
-public class FlightDto{
+public class FlightDto {
+
     private final Long id;
     private final String description;
 
@@ -24,7 +25,8 @@ public class FlightDto{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FlightDto flightDto = (FlightDto) o;
-        return Objects.equals(id, flightDto.id) && Objects.equals(description, flightDto.description);
+        return Objects.equals(id, flightDto.id) &&
+                Objects.equals(description, flightDto.description);
     }
 
     @Override

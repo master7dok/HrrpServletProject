@@ -1,11 +1,12 @@
 package com.dmdev.http.util;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertiesUtil {
+public final class PropertiesUtil {
+
     private static final Properties PROPERTIES = new Properties();
+
     static {
         loadProperties();
     }
@@ -20,7 +21,6 @@ public class PropertiesUtil {
 
     private PropertiesUtil() {
     }
-
 
     public static String get(String key) {
         return PROPERTIES.getProperty(key);
